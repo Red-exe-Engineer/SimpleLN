@@ -88,11 +88,11 @@ class LangDict:
             else:
                 raise ValueError(f'Invalid line format\n\tLine {i} in {path}: "{line}"')
 
-    def __str__(self):
+    def __str__(self) -> str:
         return ", ".join([f'{code} ({len(words)})' for code, words in self.__dict__.items()])
 
-    def __contains__(self, language):
+    def __contains__(self, language: str) -> bool:
         return hasattr(self, language)
 
-    def codes(self):
+    def codes(self) -> tuple:
         return tuple(sorted(set(self.__dict__) - {"__doc__", "__module__"}))
